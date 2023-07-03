@@ -1,0 +1,30 @@
+<label class="mb-2">Género:</label>
+<select class="form-control mb-4" [(ngModel)]="filtroGenero" (change)="aplicarFiltros()">
+  <option value="">Todos</option>
+  <option value="Aventura">Aventura</option>
+  <option value="Comedia">Comedia</option>
+  <option value="Drama">Drama</option>
+</select>
+
+<label class="mb-2">Año de lanzamiento:</label>
+<input class="form-control mb-4" type="number" [(ngModel)]="filtroLanzamiento" (change)="aplicarFiltros()">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Género</th>
+      <th>Año de lanzamiento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pelicula of peliculasFiltradas">
+      <td>{{ pelicula.titulo }}</td>
+      <td>{{ pelicula.genero }}</td>
+      <td>{{ pelicula.lanzamiento }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary mt-4" (click)="generarPDF()">Generar PDF</button>
+<button class="btn btn-success mt-4 ml-4" (click)="exportarExcel()">Exportar a Excel</button>
